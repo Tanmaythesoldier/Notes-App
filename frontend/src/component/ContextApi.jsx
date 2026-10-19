@@ -10,12 +10,9 @@ const ContextApi = (props) => {
 
     let response = await axios.get('http://localhost:3000/api/notes/allnotes',{
     withCredentials: true,})
-
   setAllnotes(response.data);
 
    }
-
-  console.log(allnotes);
 
      useEffect(()=>{
 

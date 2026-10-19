@@ -20,7 +20,8 @@ async function register(req,res){
         email,
         password:hashedPassword
     })
-    let token = jwt.sign({id:createuser.id},process.env.JWT_SCRIT)
+    
+    let token = jwt.sign({id:createuser._id},process.env.JWT_SCRIT)
     res.cookie("token",token)
     res.status(201).json({massage:"user have register"})
 }
@@ -42,7 +43,7 @@ async function login(req,res){
         return res.status(401).json({massage:"Invalid password"})
     }
 
-    let token = jwt.sign({id:user.id},process.env.JWT_SCRIT)
+    let token = jwt.sign({id:user._id},process.env.JWT_SCRIT)
 
     res.cookie("token",token,{
         httpOnly: true,
